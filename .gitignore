@@ -34,3 +34,6 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+// Local Files to Ignore
+Yelpkey.txt
