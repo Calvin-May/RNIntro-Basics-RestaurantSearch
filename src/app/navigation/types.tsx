@@ -37,6 +37,9 @@ type RootStackParamList = {
 /** Automatically Provide Typechecking for All Screens in the RootStackParamList
  * RootStackScreenProps will be used to provide TypeChecking within our Screen Components for the Route and Navigation Props.
  * This type will need to be exported and then imported by each Screen Component.
+ * Explanation: RootStackScreen Props is a Generic that extends inherits the Keys of RootStackParamList. This means that when using this as a type
+ * in our screen component we must pass a parameter. The Only allowed parameters are the keys found in our RootStackParamList type, this means that
+ * only allowed values are any Screen Components that we add to our navigator.
  */
 type RootStackScreenProps<T extends keyof RootStackParamList> =
   NativeStackScreenProps<RootStackParamList, T, 'RootStack'>;
