@@ -3,12 +3,18 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 type SearchBarProps = {
   searchTerm: string;
+  onSearchTermChange: Function;
 };
-const SearchBar = () => {
+const SearchBar = ({ searchTerm, onSearchTermChange }: SearchBarProps) => {
   return (
     <View style={styles.background}>
       <MaterialCommunityIcons name='magnify' style={styles.searchIcon} />
-      <TextInput placeholder='Search' style={styles.searchInput} />
+      <TextInput
+        placeholder='Search'
+        value={searchTerm}
+        onChangeText={(newTerm) => onSearchTermChange(newTerm)}
+        style={styles.searchInput}
+      />
     </View>
   );
 };
