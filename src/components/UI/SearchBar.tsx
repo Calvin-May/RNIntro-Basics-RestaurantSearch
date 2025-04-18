@@ -14,6 +14,8 @@ const SearchBar = ({ searchTerm, onSearchTermChange }: SearchBarProps) => {
         value={searchTerm}
         onChangeText={(newTerm) => onSearchTermChange(newTerm)}
         style={styles.searchInput}
+        autoCapitalize='none'
+        autoCorrect={false}
       />
     </View>
   );
