@@ -41,7 +41,7 @@ const RootNavigatorOptions: NativeStackNavigationOptions = {
 };
 
 const SearchScreenOptions: NativeStackNavigationOptions = {
-  // TODO: Provide SearchScreen Specific Options
+  title: 'Business Search',
 };
 
 export { RootNavigator };

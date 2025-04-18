@@ -1,5 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { RootStackScreenProps } from '@/app/navigation';
+import SearchBar from '@/components/UI/SearchBar';
 
 const SearchScreen = ({
   route,
@@ -7,7 +8,7 @@ const SearchScreen = ({
 }: RootStackScreenProps<'SearchScreen'>) => {
   return (
     <View style={styles.container}>
-      <Text>SearchScreen</Text>
+      <SearchBar />
     </View>
   );
 };
