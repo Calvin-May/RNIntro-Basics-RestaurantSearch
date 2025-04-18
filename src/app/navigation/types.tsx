@@ -9,6 +9,8 @@ import type {
   NativeStackNavigationOptions,
 } from '@react-navigation/native-stack'; // Used to Provide Typechecking within our Screen Components
 
+// Provide Type Checknig for the Root Navigator
+
 /**
  * RootStackParam List will be used to provided Typechecking for the Navigator. It provides typing to
  * all parameters that we want to pass to our screen components. This does not handle typing for
@@ -19,14 +21,41 @@ type RootStackParamList = {
   SearchScreen: undefined; // Screen with no parameters can be passed undefined as a type.
 };
 
-/**
+// Provide Type Checking for Screen Components
+
+//
+/** Providing Typechecking for Individual Screens
  * RootStackScreenProps will be used to provide TypeChecking within our Screen Components for the Route and Navigation Props.
  * This type will need to be exported and then imported by each Screen Component.
  */
-type SearchScreenProps = NativeStackScreenProps<
-  RootStackParamList,
-  'SearchScreen',
-  'RootStack'
->;
+// type SearchScreenProps = NativeStackScreenProps<
+//   RootStackParamList,
+//   'SearchScreen',
+//   'RootStack'
+// >;
 
-export { RootStackParamList, SearchScreenProps, NativeStackNavigationOptions };
+/** Automatically Provide Typechecking for All Screens in the RootStackParamList
+ * RootStackScreenProps will be used to provide TypeChecking within our Screen Components for the Route and Navigation Props.
+ * This type will need to be exported and then imported by each Screen Component.
+ */
+type RootStackScreenProps<T extends keyof RootStackParamList> =
+  NativeStackScreenProps<RootStackParamList, T, 'RootStack'>;
+
+// Provide Default Types for React-Navigation hooks and components
+
+/**
+ *  A Global Namespace used to provide Default types for useNavigation, Link, Ref, and other hooks provided by React Navigation.
+ * This will ensure type-safety when using hooks like useNavigation or components ike Link and Ref.
+ * It will also make sure that you have correct nesting on the linking prop.
+ */
+declare global {
+  namespace ReactNavigation {
+    interface RootParamList extends RootStackParamList {} // Use the RootStackParamList we created in our Navigation types and extend it
+  }
+}
+
+export {
+  RootStackParamList,
+  RootStackScreenProps,
+  NativeStackNavigationOptions,
+};

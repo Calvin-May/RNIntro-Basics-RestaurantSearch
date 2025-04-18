@@ -5,7 +5,7 @@
 import { NavigationContainer } from '@react-navigation/native';
 
 // Navigators
-import { RootNavigator } from '@/app/navigation';
+import { RootNavigator, RootStackParamList } from '@/app/navigation';
 
 // App
 export default function App() {
