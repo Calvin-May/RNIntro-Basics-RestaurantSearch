@@ -1,6 +1,7 @@
 import { View, Text, StyleSheet } from 'react-native';
+import { SearchScreenProps } from '@/app/navigation';
 
-const SearchScreen = () => {
+const SearchScreen = ({ route, navigation }: SearchScreenProps) => {
   return (
     <View style={styles.container}>
       <Text>SearchScreen</Text>
