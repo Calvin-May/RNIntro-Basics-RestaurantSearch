@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { RootStackScreenProps } from '@/app/navigation';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 // Imports | Components
 import SearchBar from '@/components/UI/SearchBar';
 
@@ -15,14 +15,12 @@ const SearchScreen = ({
   const [APIResults, setAPIResults] = useState([]);
   const [errorMessage, setErrorMessage] = useState('');
 
-  console.log(term);
-
-  const searchAPI = async () => {
+  const searchAPI = async (searchTerm: string = 'Food') => {
     console.log('gotHere');
     try {
       const response = await yelp.get('/search', {
         params: {
-          term,
+          term: searchTerm,
           locale: 'en_CA',
           location: 'Ajax Ontario',
           sort_by: 'best_match',
@@ -35,12 +33,15 @@ const SearchScreen = ({
     }
   };
 
+  useEffect(() => {
+    searchAPI();
+  }, []);
   return (
     <View style={styles.container}>
       <SearchBar
         searchTerm={term}
         onSearchTermChange={(newTerm: string) => setTerm(newTerm)}
-        onTermSubmit={searchAPI}
+        onTermSubmit={() => searchAPI(term)}
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
       <Text>We have found {APIResults.length} results</Text>
