@@ -15,6 +15,9 @@ const SearchScreen = ({
       <SearchBar
         searchTerm={term}
         onSearchTermChange={(newTerm: string) => setTerm(newTerm)}
+        onTermSubmit={() => {
+          console.log('Term Submitted');
+        }}
       />
     </View>
   );
