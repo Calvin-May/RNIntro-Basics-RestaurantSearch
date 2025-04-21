@@ -18,6 +18,7 @@ export default () => {
         },
       });
       setAPIResults(response.data.businesses);
+      console.log(APIResults);
     } catch (err) {
       setErrorMessage('Oops. Something went wrong.');
     }

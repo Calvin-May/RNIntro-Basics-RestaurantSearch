@@ -1,11 +1,12 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { RootStackScreenProps } from '@/app/navigation';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 // Import | APIs
 import yelp from '@/api/yelp';
 // Imports | Components
 import SearchBar from '@/components/UI/SearchBar';
+import { ResultsList } from '@/components/ResultsList';
 // Imports | Custom Hooks
 import useResults from '@/hooks/useResults';
 
@@ -25,6 +26,9 @@ const SearchScreen = ({
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
       <Text>We have found {APIResults.length} results</Text>
+      <ResultsList title='Bites on a Budget' />
+      <ResultsList title='Conventional Cuisine' />
+      <ResultsList title='Extravagant Eateries' />
     </View>
   );
 };
