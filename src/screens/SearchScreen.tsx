@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, ScrollView } from 'react-native';
 import { RootStackScreenProps } from '@/app/navigation';
 import { useState } from 'react';
 
@@ -26,27 +26,28 @@ const SearchScreen = ({
   };
 
   return (
-    <View style={styles.container}>
+    <>
       <SearchBar
         searchTerm={term}
         onSearchTermChange={(newTerm: string) => setTerm(newTerm)}
         onTermSubmit={() => searchAPI(term)}
       />
-      {errorMessage ? <Text>{errorMessage}</Text> : null}
-      <Text>We have found {APIResults.length} results</Text>
-      <ResultsList
-        title='Bites on a Budget'
-        resultsList={filterResultsByPrice('$')}
-      />
-      <ResultsList
-        title='Conventional Cuisine'
-        resultsList={filterResultsByPrice('$$')}
-      />
-      <ResultsList
-        title='Extravagant Eateries'
-        resultsList={filterResultsByPrice('$$$')}
-      />
-    </View>
+      <ScrollView>
+        {errorMessage ? <Text>{errorMessage}</Text> : null}
+        <ResultsList
+          title='Bites on a Budget'
+          resultsList={filterResultsByPrice('$')}
+        />
+        <ResultsList
+          title='Conventional Cuisine'
+          resultsList={filterResultsByPrice('$$')}
+        />
+        <ResultsList
+          title='Extravagant Eateries'
+          resultsList={filterResultsByPrice('$$$')}
+        />
+      </ScrollView>
+    </>
   );
 };
 

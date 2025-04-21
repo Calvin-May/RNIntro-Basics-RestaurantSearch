@@ -16,6 +16,7 @@ const ResultsList = ({ title, resultsList }: ResultsListProps) => {
           return <ResultsDetail result={item} />;
         }}
         horizontal
+        showsHorizontalScrollIndicator={false}
       />
     </View>
   );
