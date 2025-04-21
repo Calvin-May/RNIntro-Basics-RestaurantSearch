@@ -9,6 +9,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'; // 
 
 // Imports | Screen Components
 import SearchScreen from '@/screens/SearchScreen';
+import ResultShowScreen from '@/screens/ResultShowScreen';
 
 // Imports | Typing
 import type { NativeStackNavigationOptions, RootStackParamList } from './types';
@@ -31,6 +32,11 @@ const RootNavigator = () => {
         component={SearchScreen}
         options={SearchScreenOptions}
       />
+      <StackNavigator.Screen
+        name='ResultShowScreen'
+        component={ResultShowScreen}
+        options={ResultShowScreenOptions}
+      />
     </StackNavigator.Navigator>
   );
 };
@@ -42,6 +48,9 @@ const RootNavigatorOptions: NativeStackNavigationOptions = {
 
 const SearchScreenOptions: NativeStackNavigationOptions = {
   title: 'Business Search',
+};
+const ResultShowScreenOptions: NativeStackNavigationOptions = {
+  title: 'Restaurant Title',
 };
 
 export { RootNavigator };

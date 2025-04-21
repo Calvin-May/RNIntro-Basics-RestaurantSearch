@@ -19,6 +19,7 @@ import type {
  */
 type RootStackParamList = {
   SearchScreen: undefined; // Screen with no parameters can be passed undefined as a type.
+  ResultShowScreen: undefined;
 };
 
 // Provide Type Checking for Screen Components
