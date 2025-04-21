@@ -9,7 +9,7 @@ import type {
   NativeStackNavigationOptions,
 } from '@react-navigation/native-stack'; // Used to Provide Typechecking within our Screen Components
 
-// Provide Type Checknig for the Root Navigator
+// Provide Type Checking for the Root Navigator
 
 /**
  * RootStackParam List will be used to provided Typechecking for the Navigator. It provides typing to
@@ -62,4 +62,5 @@ export {
   RootStackParamList,
   RootStackScreenProps,
   NativeStackNavigationOptions,
+  NativeStackScreenProps,
 };

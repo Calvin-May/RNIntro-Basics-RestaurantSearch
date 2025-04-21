@@ -1,11 +1,19 @@
 import { YelpResult } from '@/types/types';
-import { View, Text, StyleSheet, FlatList } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
 import ResultsDetail from './UI/ResultsDetail';
+import type { RootStackParamList } from '@/app/navigation';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
 type ResultsListProps = {
   title: string;
   resultsList: YelpResult[];
+  navigation: NativeStackNavigationProp<
+    RootStackParamList,
+    'SearchScreen',
+    'RootStack'
+  >;
 };
-const ResultsList = ({ title, resultsList }: ResultsListProps) => {
+const ResultsList = ({ title, resultsList, navigation }: ResultsListProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
@@ -13,7 +21,25 @@ const ResultsList = ({ title, resultsList }: ResultsListProps) => {
         data={resultsList}
         keyExtractor={(result) => result.id}
         renderItem={({ item }) => {
-          return <ResultsDetail result={item} />;
+          return (
+            <Pressable
+              style={({ pressed }) => {
+                return !pressed
+                  ? styles.pressable
+                  : [styles.pressable, styles.pressablePressed];
+              }}
+              android_ripple={{
+                color: '#50516659',
+                //radius: 12,
+                foreground: true,
+              }}
+              onPress={() => {
+                navigation.navigate('ResultShowScreen');
+              }}
+            >
+              <ResultsDetail result={item} />
+            </Pressable>
+          );
         }}
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -35,5 +61,15 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     marginHorizontal: 12,
     marginBottom: 5,
+  },
+  pressable: {
+    marginHorizontal: 12,
+    overflow: 'hidden',
+    borderRadius: 4,
+    paddingBottom: 2,
+  },
+  pressablePressed: {
+    opacity: 0.7,
+    backgroundColor: '#CACBD459',
   },
 });

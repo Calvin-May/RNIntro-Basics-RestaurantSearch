@@ -21,7 +21,7 @@ export default ResultsDetail;
 
 const styles = StyleSheet.create({
   container: {
-    marginHorizontal: 12,
+    //marginHorizontal: 12,
   },
   image: {
     height: 150,
