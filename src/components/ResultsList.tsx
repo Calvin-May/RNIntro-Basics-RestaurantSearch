@@ -1,19 +1,22 @@
 import { YelpResult } from '@/types/types';
 import { View, Text, StyleSheet, FlatList, Pressable } from 'react-native';
 import ResultsDetail from './UI/ResultsDetail';
-import type { RootStackParamList } from '@/app/navigation';
-import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+// import type { RootStackParamList } from '@/app/navigation';
+// import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
 
 type ResultsListProps = {
   title: string;
   resultsList: YelpResult[];
-  navigation: NativeStackNavigationProp<
-    RootStackParamList,
-    'SearchScreen',
-    'RootStack'
-  >;
+  // navigation: NativeStackNavigationProp<
+  //   RootStackParamList,
+  //   'SearchScreen',
+  //   'RootStack'
+  // >;
 };
-const ResultsList = ({ title, resultsList, navigation }: ResultsListProps) => {
+const ResultsList = ({ title, resultsList }: ResultsListProps) => {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>

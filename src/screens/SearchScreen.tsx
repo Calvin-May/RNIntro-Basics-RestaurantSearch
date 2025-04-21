@@ -10,10 +10,7 @@ import { ResultsList } from '@/components/ResultsList';
 // Imports | Custom Hooks
 import useResults from '@/hooks/useResults';
 
-const SearchScreen = ({
-  route,
-  navigation,
-}: RootStackScreenProps<'SearchScreen'>) => {
+const SearchScreen = ({}: RootStackScreenProps<'SearchScreen'>) => {
   const [term, setTerm] = useState('');
   const [searchAPI, APIResults, errorMessage] = useResults();
 
@@ -37,17 +34,17 @@ const SearchScreen = ({
         <ResultsList
           title='Bites on a Budget'
           resultsList={filterResultsByPrice('$')}
-          navigation={navigation}
+          //navigation={navigation}
         />
         <ResultsList
           title='Conventional Cuisine'
           resultsList={filterResultsByPrice('$$')}
-          navigation={navigation}
+          //navigation={navigation}
         />
         <ResultsList
           title='Extravagant Eateries'
           resultsList={filterResultsByPrice('$$$')}
-          navigation={navigation}
+          //navigation={navigation}
         />
       </ScrollView>
     </>
