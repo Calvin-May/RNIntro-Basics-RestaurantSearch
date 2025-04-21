@@ -37,7 +37,7 @@ const ResultsList = ({ title, resultsList }: ResultsListProps) => {
                 foreground: true,
               }}
               onPress={() => {
-                navigation.navigate('ResultShowScreen');
+                navigation.navigate('ResultShowScreen', { resultID: item.id });
               }}
             >
               <ResultsDetail result={item} />

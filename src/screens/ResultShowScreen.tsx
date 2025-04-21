@@ -4,9 +4,11 @@ const ResultShowScreen = ({
   route,
   navigation,
 }: RootStackScreenProps<'ResultShowScreen'>) => {
+  const resultID = route.params.resultID;
+
   return (
     <View style={styles.container}>
-      <Text>ResultShowScreen</Text>
+      <Text>ResultShowScreen: {resultID}</Text>
     </View>
   );
 };
