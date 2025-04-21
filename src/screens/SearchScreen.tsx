@@ -17,6 +17,14 @@ const SearchScreen = ({
   const [term, setTerm] = useState('');
   const [searchAPI, APIResults, errorMessage] = useResults();
 
+  const filterResultsByPrice = (price: string) => {
+    // price === '$' || '$$' || '$$$'
+
+    return APIResults.filter((result) => {
+      return result.price === price;
+    });
+  };
+
   return (
     <View style={styles.container}>
       <SearchBar
@@ -26,9 +34,18 @@ const SearchScreen = ({
       />
       {errorMessage ? <Text>{errorMessage}</Text> : null}
       <Text>We have found {APIResults.length} results</Text>
-      <ResultsList title='Bites on a Budget' />
-      <ResultsList title='Conventional Cuisine' />
-      <ResultsList title='Extravagant Eateries' />
+      <ResultsList
+        title='Bites on a Budget'
+        resultsList={filterResultsByPrice('$')}
+      />
+      <ResultsList
+        title='Conventional Cuisine'
+        resultsList={filterResultsByPrice('$$')}
+      />
+      <ResultsList
+        title='Extravagant Eateries'
+        resultsList={filterResultsByPrice('$$$')}
+      />
     </View>
   );
 };

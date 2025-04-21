@@ -1,11 +1,21 @@
-import { View, Text, StyleSheet } from 'react-native';
+import { YelpResult } from '@/types/types';
+import { View, Text, StyleSheet, FlatList } from 'react-native';
 type ResultsListProps = {
   title: string;
+  resultsList: YelpResult[];
 };
-const ResultsList = ({ title }: ResultsListProps) => {
+const ResultsList = ({ title, resultsList }: ResultsListProps) => {
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
+      <FlatList
+        data={resultsList}
+        keyExtractor={(result) => result.id}
+        renderItem={({ item }) => {
+          return <Text>{item.name} </Text>;
+        }}
+        horizontal
+      />
     </View>
   );
 };
