@@ -1,5 +1,6 @@
 import { YelpResult } from '@/types/types';
 import { View, Text, StyleSheet, FlatList } from 'react-native';
+import ResultsDetail from './UI/ResultsDetail';
 type ResultsListProps = {
   title: string;
   resultsList: YelpResult[];
@@ -12,7 +13,7 @@ const ResultsList = ({ title, resultsList }: ResultsListProps) => {
         data={resultsList}
         keyExtractor={(result) => result.id}
         renderItem={({ item }) => {
-          return <Text>{item.name} </Text>;
+          return <ResultsDetail result={item} />;
         }}
         horizontal
       />
@@ -25,10 +26,13 @@ export { ResultsList };
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginBottom: 10,
   },
   title: {
     fontSize: 18,
     color: '#242424',
     fontWeight: '600',
+    marginHorizontal: 12,
+    marginBottom: 5,
   },
 });
