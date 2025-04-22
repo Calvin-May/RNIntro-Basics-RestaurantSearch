@@ -17,6 +17,11 @@ type ResultsListProps = {
 const ResultsList = ({ title, resultsList }: ResultsListProps) => {
   const navigation = useNavigation();
 
+  // Wait for ResultList to populate with data rendering anything
+  if (!resultsList.length) {
+    return null;
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>{title}</Text>
